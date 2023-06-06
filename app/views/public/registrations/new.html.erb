@@ -30,6 +30,26 @@
     <%= f.label :パスワード（確認用） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  
+  <div class="field">
+    <%= f.label :愛犬の名前 %><br />
+    <%= f.text_field :dog_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :愛犬の犬種 %><br />
+    <%= f.text_field :dog_breed %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :愛犬の年齢 %><br />
+    <%= f.select :dog_age, *[1..50], include_blank: "年齢選択" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :愛犬の性別 %><br />
+    <%= f.select :dog_gender, ['オス','メス'], include_blank: "性別選択" %>
+  </div>
 
   <div class="actions">
     <%= f.submit "新規登録", class: 'btn btn-success' %>

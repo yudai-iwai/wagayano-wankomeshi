@@ -3,7 +3,8 @@
 </div>
 
 <div style="text-align:center; font-size:20px;" class="mb-3">
-  ↓↓↓レシピを閲覧するには、下のどれかを選んで進んでね↓↓↓
+  <h5>↓↓↓レシピを閲覧するには、下のどれかを選んで進んでください↓↓↓</h5><br>
+  <h6>※これから愛犬を家族に迎え入れる予定の方は、『ゲストログイン』を選択してください</h6>
 </div>
 
 <div class="text-center mb-3">
@@ -16,4 +17,12 @@
 
 <div class="text-center">
   <%= link_to "ゲストログイン", class: "btn btn-danger" %>
+</div>
+
+<div class="text-center">
+  <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+</div>
+
+<div class="text-center">
+  <%= link_to "管理者ログイン", new_admin_session_path %>
 </div>
