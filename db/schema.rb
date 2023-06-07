@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_06_05_052818) do
 
   create_table "post_recipes", force: :cascade do |t|
     t.integer "member_id", null: false
+    t.text "title", null: false
     t.text "introduction", null: false
     t.text "material_quantity", null: false
     t.text "recipe", null: false

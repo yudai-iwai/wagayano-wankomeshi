@@ -6,6 +6,8 @@ class Public::MembersController < ApplicationController
   end
   
   def my_page
+    @member = current_member
+    @post_recipes = current_member.post_recipes
   end
   
   def edit

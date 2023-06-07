@@ -1,1 +1,22 @@
-レシピの投稿
+<div class="container">
+  <div class="row">
+    <div class="mt-5 ml-5">
+      <span class="bg-light h3">レシピの新規投稿</span>
+    </div>
+  </div>
+</div>
+<div>
+  <%= form_with model: @post_recipe do |f| %>
+    <p>タイトル</p>
+    <%= f.text_area :title, placeholder: "（例）鳥ささみとたっぷり野菜" %>
+    <p>紹介文</p>
+    <%= f.text_area :introduction, placeholder: "（例）数種類の野菜を煮込み、鳥ささみを茹ででトッピングしました。" %>
+    <p>材料・分量</p>
+    <%= f.text_area :material_quantity, placeholder: "（例）鳥ささみ・・・500g、大根・・・1/3本、人参・・・１本、白菜・・・1/2個、水・・・200cc" %>
+    <p>作り方</p>
+    <%= f.text_area :recipe, placeholder: "（例）①野菜を細かく切って、水を鍋に入れて煮込む。②野菜が柔らかくなったら、ささみを入れて火が通るまでよく煮込む。③冷めたら完成。" %>
+    <p>わんこメシの画像</p>
+    <%= f.file_field :image, accept: "image/*" %>
+    <%= f.submit "レシピを公開する", class: 'btn btn-success' %>
+  <% end %>
+</div>
