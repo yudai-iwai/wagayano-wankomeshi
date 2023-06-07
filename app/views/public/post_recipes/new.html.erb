@@ -8,7 +8,7 @@
 <div>
   <%= form_with model: @post_recipe do |f| %>
     <p>タイトル</p>
-    <%= f.text_area :title, placeholder: "（例）鳥ささみとたっぷり野菜" %>
+    <%= f.text_area :title, autofocus: true, placeholder: "（例）鳥ささみとたっぷり野菜" %>
     <p>紹介文</p>
     <%= f.text_area :introduction, placeholder: "（例）数種類の野菜を煮込み、鳥ささみを茹ででトッピングしました。" %>
     <p>材料・分量</p>

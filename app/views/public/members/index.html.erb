@@ -1,1 +1,40 @@
-会員一覧
+<div class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table table-borderd">
+          <tr class="table-borderless">
+            <th>
+              <span class="bg-light h3 col-12">会員一覧</span>
+            </th>
+          </tr>
+          <tr class="bg-light">
+            <th class="col-3">会員名</th>
+            <th class="col-3">愛犬の名前</th>
+            <th class="col-3">愛犬の犬種</th>
+            <th class="col-3">愛犬の年齢</th>
+            <th class="col-3">愛犬の性別</th>
+          </tr>
+          <% @members.each do |member| %>
+            <tr>
+              <td class="border-bottom">
+                <%= link_to member_path(member.id), class:"text-dark" do %>
+                  <% if member.image.attached? %>
+                    <%= image_tag member.image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image_member', size: "100x100" %>
+                  <% end %>
+                  <%= member.name %>
+                <% end %>
+              </td>
+              <td class="border-bottom"><%= member.dog_name %></td>
+              <td class="border-bottom"><%= member.dog_breed %></td>
+              <td class="border-bottom"><%= member.dog_age %>歳</td>
+              <td class="border-bottom"><%= member.dog_gender %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

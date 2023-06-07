@@ -8,7 +8,7 @@
 <div>
   <%= form_with model: @post_recipe, url:post_recipe_path(@post_recipe.id), method: :patch do |f| %>
     <p>タイトル</p>
-    <%= f.text_area :title %>
+    <%= f.text_area :title, autofocus: true %>
     <p>紹介文</p>
     <%= f.text_area :introduction %>
     <p>材料・分量</p>
