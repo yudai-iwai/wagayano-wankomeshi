@@ -23,6 +23,21 @@
   <% end %>
 </div>
 <div>
+  <% if @post_recipe.favorited_by?(current_member) %>
+    <p>
+      <%= link_to post_recipe_favorites_path(@post_recipe), method: :delete do %>
+        ♥<%= @post_recipe.favorites.count %>いいね
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_recipe_favorites_path(@post_recipe), method: :post do %>
+        ♡<%= @post_recipe.favorites.count %>いいね
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<div>
   <p>コメント件数：<%= @post_recipe.post_comments.count %></p>
   <% @post_recipe.post_comments.each do |post_comment| %>
     <%= link_to member_path(post_comment.member.id), class:"text-dark" do %>
@@ -34,7 +49,7 @@
       <%= post_comment.member.name %>
     <% end %>
     <%= post_comment.comment %>
-    <%= time_ago_in_words(post_comment.created_at) %>
+    <p><%= time_ago_in_words(post_comment.created_at) %>前</p>
     <% if post_comment.member == current_member %>
       <%= link_to "削除", post_recipe_post_comment_path(post_comment.post_recipe, post_comment), method: :delete, class: "btn btn-danger" %>
     <% end %>
