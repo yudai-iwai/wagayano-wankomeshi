@@ -54,6 +54,7 @@
           <tr class="bg-light">
             <th class="col-3">タイトル</th>
             <th class="col-3">紹介文</th>
+            <th class="col-3">コメント・いいね</th>
           </tr>
           <% @post_recipes.each do |post_recipe| %>
             <tr>
@@ -68,6 +69,7 @@
                 <% end %>
               </td>
               <td class="border-bottom"><%= post_recipe.introduction %></td>
+              <td class="border-bottom"><%= link_to "コメント：#{post_recipe.post_comments.count}件", post_recipe_path(post_recipe.id) %></td>
             </tr>
           <% end %>
         </table>

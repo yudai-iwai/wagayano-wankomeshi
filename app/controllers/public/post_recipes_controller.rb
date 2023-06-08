@@ -16,6 +16,7 @@ class Public::PostRecipesController < ApplicationController
 
   def show
     @post_recipe = PostRecipe.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def destroy
