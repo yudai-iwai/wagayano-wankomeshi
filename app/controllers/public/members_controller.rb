@@ -28,6 +28,12 @@ class Public::MembersController < ApplicationController
 
   def out
   end
+  
+  def favorites
+    @member = Member.find(params[:id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:post_recipe_id)
+    @favorite_post_recipes = PostRecipe.find(favorites)
+  end
 
   private
 

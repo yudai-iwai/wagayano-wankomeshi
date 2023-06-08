@@ -12,6 +12,9 @@
     <%= image_tag 'no_image_member', size: "200x200" %>
   <% end %>
 </div>
+<div>
+  <%= link_to "『いいね』したレシピを見る", favorites_member_path(@member) %>
+</div>
 <table>
   <tr>
     <th>会員名</th>

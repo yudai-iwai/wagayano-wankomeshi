@@ -23,6 +23,9 @@ Rails.application.routes.draw do
         get 'quit'
         patch 'out'
       end
+      member do
+        get 'favorites'
+      end
     end
     resources :relationships, only: [:create, :destroy] do
       collection do
