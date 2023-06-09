@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   # 会員側deviseルーティング
   devise_for :members, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
+    registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'public/sessions#new_guest'
+  end
+  
   # 管理者側deviseルーティング
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
+    sessions: 'admin/sessions'
   }
   
   # 会員側ルーティング
