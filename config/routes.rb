@@ -41,9 +41,10 @@ Rails.application.routes.draw do
   # 管理者側ルーティング
   namespace :admin do
     root to: 'homes#top'
-    resources :post_recipes, only: [:new, :create, :index, :show, :destroy, :edit, :update]
+    resources :post_recipes, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+      resources :post_comments, only: [:create, :destroy]
+    end
     resources :members, only: [:index, :show, :edit, :update]
-    resources :post_comments, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
