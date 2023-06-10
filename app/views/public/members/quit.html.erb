@@ -1,1 +1,12 @@
-退会確認画面
+<h2>退会確認画面</h2>
+<p>
+  退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+  再度ご利用いただく場合には、新規登録のお手続きが必要となります。<br>
+  本当に会員をやめますか？
+</p>
+<div>
+  <%= link_to "会員をやめない", my_page_members_path, class: "btn btn-primary" %>
+</div>
+<div>
+  <%= link_to "会員をやめる", out_members_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+</div>

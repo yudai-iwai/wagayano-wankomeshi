@@ -27,8 +27,12 @@ class Public::MembersController < ApplicationController
   end
 
   def out
+    @member = current_member
+    @member.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
-  
+
   def favorites
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_recipe_id)

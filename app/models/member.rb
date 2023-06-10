@@ -3,6 +3,8 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # ゲストログイン用のコード
   def self.guest
     find_or_create_by!(email: 'wagayano@wankomeshi') do |member|
       member.password = SecureRandom.urlsafe_base64
@@ -24,5 +26,14 @@ class Member < ApplicationRecord
   # フォローフォロワーの一覧画面を表示させる
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  # ログイン時に退会済みのユーザーが同じアカウントでログインできないよう制約を設ける
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
+  def boolean_label(value)
+    value ? '退会' : '有効'
+  end
   
 end

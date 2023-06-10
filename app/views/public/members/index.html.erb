@@ -24,7 +24,11 @@
                   <% else %>
                     <%= image_tag 'no_image_member', size: "100x100" %>
                   <% end %>
-                  <%= member.name %>
+                  <% if member.is_deleted == false %>
+                    <%= member.name %>
+                  <% else %>
+                    <p>退会済みユーザー</p>
+                  <% end %>
                 <% end %>
               </td>
               <td class="border-bottom"><%= member.dog_name %></td>
