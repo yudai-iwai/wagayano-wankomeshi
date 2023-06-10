@@ -8,9 +8,9 @@
               <span class="bg-light h3 col-12">会員詳細</span>
               <div>
                 <% if @member.is_deleted == true %>
-                  <%= link_to "利用再開", resume_admin_members_path, method: :patch, class: "btn btn-success" %>
+                  <%= link_to "利用再開", resume_admin_member_path(@member.id), method: :patch, class: "btn btn-success" %>
                 <% else %>
-                  <%= link_to "利用停止", out_admin_members_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に利用停止しますか？" %>
+                  <%= link_to "利用停止", out_admin_member_path(@member.id), method: :patch, class: "btn btn-danger", "data-confirm" => "本当に利用停止しますか？" %>
                 <% end %>
               </div>
             </th>

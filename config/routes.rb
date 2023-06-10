@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   devise_scope :member do
     post 'members/guest_sign_in', to: 'public/sessions#new_guest'
   end
-  
+
   # 管理者側deviseルーティング
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
-  
+
   # 会員側ルーティング
   scope module: :public do
     root to: 'homes#top'
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
     resources :members, only: [:index, :show] do
-      collection do
+      member do
         patch 'out'
         patch 'resume'
       end
