@@ -1,1 +1,82 @@
-会員詳細
+<div class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table table-borderd">
+          <tr class="table-borderless">
+            <th>
+              <span class="bg-light h3 col-12">会員詳細</span>
+              <div>
+                <% if @member.is_deleted == true %>
+                  <%= link_to "利用再開", resume_admin_members_path, method: :patch, class: "btn btn-success" %>
+                <% else %>
+                  <%= link_to "利用停止", out_admin_members_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に利用停止しますか？" %>
+                <% end %>
+              </div>
+            </th>
+          </tr>
+          <tr class="bg-light">
+            <th class="col-3">会員名</th>
+            <th class="col-3">愛犬の名前</th>
+            <th class="col-3">愛犬の犬種</th>
+            <th class="col-3">愛犬の年齢</th>
+            <th class="col-3">愛犬の性別</th>
+          </tr>
+          <tr>
+            <td class="border-bottom">
+              <% if @member.image.attached? %>
+                <%= image_tag @member.image, size: "100x100" %>
+              <% else %>
+                <%= image_tag 'no_image_member', size: "100x100" %>
+              <% end %>
+              <%= @member.name %>
+            </td>
+            <td class="border-bottom"><%= @member.dog_name %></td>
+            <td class="border-bottom"><%= @member.dog_breed %></td>
+            <td class="border-bottom"><%= @member.dog_age %>歳</td>
+            <td class="border-bottom"><%= @member.dog_gender %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table table-borderd">
+          <tr class="table-borderless">
+            <th>
+              <span class="bg-light h3 col-12"><%= @member.name %>さんが投稿したレシピ</span>
+            </th>
+          </tr>
+          <tr class="bg-light">
+            <th class="col-3">タイトル</th>
+            <th class="col-3">紹介文</th>
+            <th class="col-3">コメント・いいね</th>
+          </tr>
+          <% @post_recipes.each do |post_recipe| %>
+            <tr>
+              <td class="border-bottom">
+                <%= link_to post_recipe_path(post_recipe.id), class:"text-dark" do %>
+                  <% if post_recipe.image.attached? %>
+                    <%= image_tag post_recipe.image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                  <%= post_recipe.title %>
+                <% end %>
+              </td>
+              <td class="border-bottom"><%= post_recipe.introduction %></td>
+              <td class="border-bottom">
+                <%= link_to "コメント：#{post_recipe.post_comments.count}件", post_recipe_path(post_recipe.id) %><br>
+                <%= link_to "いいね：#{post_recipe.favorites.count}件", post_recipe_path(post_recipe.id) %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

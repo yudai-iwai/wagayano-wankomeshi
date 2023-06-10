@@ -44,7 +44,12 @@ Rails.application.routes.draw do
     resources :post_recipes, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :members, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show] do
+      collection do
+        patch 'out'
+        patch 'resume'
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

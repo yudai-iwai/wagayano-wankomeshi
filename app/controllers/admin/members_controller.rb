@@ -4,11 +4,19 @@ class Admin::MembersController < ApplicationController
   end
 
   def show
+    @member = Member.find(params[:id])
+    @post_recipes = @member.post_recipes
   end
 
-  def edit
+  def out
+    @member = Member.find(params[:id])
+    @member.update(is_deleted: true)
+    redirect_to admin_members_path
   end
 
-  def update
+  def resume
+    @member = Member.find(params[:id])
+    @member.update(is_deleted: false)
+    redirect_to admin_members_path
   end
 end
