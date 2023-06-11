@@ -32,8 +32,24 @@ class Member < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  # 会員のステータス
   def boolean_label(value)
     value ? '退会' : '有効'
+  end
+  
+  # 検索方法の分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @member = Member.where("dog_breed LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @member = Member.where("dog_breed LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @member = Member.where("dog_breed LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @member = Member.where("dog_breed LIKE?", "%#{word}%")
+    else
+      @member = Member.all
+    end
   end
   
 end

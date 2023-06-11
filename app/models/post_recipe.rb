@@ -7,4 +7,20 @@ class PostRecipe < ApplicationRecord
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
+  
+  # 検索方法の分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post_recipe = PostRecipe.where("material_quantity LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @post_recipe = PostRecipe.where("material_quantity LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @post_recipe = PostRecipe.where("material_quantity LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @post_recipe = PostRecipe.where("material_quantity LIKE?", "%#{word}%")
+    else
+      @post_recipe = PostRecipe.all
+    end
+  end
+  
 end

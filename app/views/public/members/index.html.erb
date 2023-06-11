@@ -12,8 +12,8 @@
             <th class="col-3">会員名</th>
             <th class="col-3">愛犬の名前</th>
             <th class="col-3">愛犬の犬種</th>
-            <th class="col-3">愛犬の年齢</th>
-            <th class="col-3">愛犬の性別</th>
+            <th class="col-1">愛犬の年齢</th>
+            <th class="col-2">愛犬の性別</th>
           </tr>
           <% @members.each do |member| %>
             <tr>
@@ -24,11 +24,10 @@
                   <% else %>
                     <%= image_tag 'no_image_member', size: "100x100" %>
                   <% end %>
-                  <% if member.is_deleted == false %>
-                    <%= member.name %>
-                  <% else %>
-                    <p>退会済みユーザー</p>
-                  <% end %>
+                  <%= member.name %><br>
+                <% end %>
+                <% if member.is_deleted == true %>
+                  <p>＜退会済み＞</p>
                 <% end %>
               </td>
               <td class="border-bottom"><%= member.dog_name %></td>
