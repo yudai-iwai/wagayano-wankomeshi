@@ -30,13 +30,10 @@ Rails.application.routes.draw do
       end
       member do
         get 'favorites'
-      end
-    end
-    resources :relationships, only: [:create, :destroy] do
-      collection do
         get 'followings'
         get 'followers'
       end
+      resources :relationships, only: [:create, :destroy]
     end
   end
   # 管理者側ルーティング

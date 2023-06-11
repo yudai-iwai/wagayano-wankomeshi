@@ -1,0 +1,48 @@
+<div class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table table-borderd">
+          <tr class="table-borderless">
+            <th>
+              <span class="bg-light h3 col-12">フォローしている会員</span>
+            </th>
+          </tr>
+          <% if @members.exists? %>
+            <% @members.each do |member| %>
+              <tr class="bg-light">
+                <th class="col-3">会員名</th>
+                <th class="col-3">愛犬の犬種</th>
+                <th class="col-3"></th>
+                <th class="col-3"></th>
+              </tr>
+              <tr>
+                <td class="border-bottom">
+                  <% if member.image.attached? %>
+                    <%= image_tag member.image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image_member', size: "100x100" %>
+                  <% end %>
+                  <%= member.name %><br>
+                  <% if member.is_deleted == true %>
+                    <p>＜退会済み＞</p>
+                  <% end %>
+                </td>
+                <td class="border-bottom"><%= member.dog_breed %></td>
+                <td class="border-bottom">
+                  フォロー数：<%= member.followings.count %><br>
+                  フォロワー数：<%= member.followers.count %>
+                </td>
+                <td class="border-bottom">
+                  <%= link_to "Show", member_path(member.id) %>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <p>会員はいません</p>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

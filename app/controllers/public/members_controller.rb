@@ -1,4 +1,6 @@
 class Public::MembersController < ApplicationController
+  before_action :set_member, only: [:followings, :followers]
+  
   def index
     @members = Member.all
   end
@@ -38,11 +40,23 @@ class Public::MembersController < ApplicationController
     favorites = Favorite.where(member_id: @member.id).pluck(:post_recipe_id)
     @favorite_post_recipes = PostRecipe.find(favorites)
   end
+  
+  def followings
+    @members = @member.followings
+  end
 
+  def followers
+    @members = @member.followers
+  end
+  
   private
 
   def member_params
     params.require(:member).permit(:name, :email, :dog_name, :dog_breed, :dog_age, :dog_gender, :image)
+  end
+
+  def set_member
+    @member = Member.find(params[:id])
   end
 
 end
