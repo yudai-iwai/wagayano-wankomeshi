@@ -18,11 +18,12 @@
             </th>
           </tr>
           <tr class="bg-light">
-            <th class="col-3">会員名</th>
-            <th class="col-3">愛犬の名前</th>
-            <th class="col-3">愛犬の犬種</th>
-            <th class="col-3">愛犬の年齢</th>
-            <th class="col-3">愛犬の性別</th>
+            <th class="col-2">会員名</th>
+            <th class="col-2">愛犬の名前</th>
+            <th class="col-2">愛犬の犬種</th>
+            <th class="col-2">愛犬の年齢</th>
+            <th class="col-2">愛犬の性別</th>
+            <th class="col-2">フォロー・フォロワー</th>
           </tr>
           <tr>
             <td class="border-bottom">
@@ -40,6 +41,16 @@
             <td class="border-bottom"><%= @member.dog_breed %></td>
             <td class="border-bottom"><%= @member.dog_age %>歳</td>
             <td class="border-bottom"><%= @member.dog_gender %></td>
+            <td class="border-bottom">
+              フォロー：
+              <%= link_to followings_member_path(@member) do %>
+                <%= @member.followings.count %><br>
+              <% end %>
+              フォロワー：
+              <%= link_to followers_member_path(@member) do %>
+                <%= @member.followers.count %>
+              <% end %>
+            </td>
           </tr>
         </table>
       </div>
@@ -81,6 +92,9 @@
             </tr>
           <% end %>
         </table>
+        <div>
+          <%= link_to "戻る＞", :back %>
+        </div>
       </div>
     </div>
   </div>

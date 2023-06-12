@@ -13,10 +13,16 @@
   <% end %>
 </div>
 <div>
-  <%= link_to "フォロー中", followings_member_path(@member) %>
+  フォロー：
+  <%= link_to followings_member_path(@member) do %>
+    <%= @member.followings.count %>
+  <% end %>
 </div>
 <div>
-  <%= link_to "フォロワー", followers_member_path(@member) %>
+  フォロワー：
+  <%= link_to followers_member_path(@member) do %>
+    <%= @member.followers.count %>
+  <% end %>
 </div>
 <div>
   <%= link_to "『いいね』したレシピを見る", favorites_member_path(@member) %>
