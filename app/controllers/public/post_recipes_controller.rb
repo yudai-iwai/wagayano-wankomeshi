@@ -11,7 +11,7 @@ class Public::PostRecipesController < ApplicationController
   end
 
   def index
-    @post_recipes = PostRecipe.all
+    @post_recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_recipes : PostRecipe.all
   end
 
   def show
@@ -38,6 +38,6 @@ class Public::PostRecipesController < ApplicationController
   private
 
   def post_recipe_params
-    params.require(:post_recipe).permit(:title, :introduction, :material_quantity, :recipe, :image)
+    params.require(:post_recipe).permit(:title, :introduction, :material_quantity, :recipe, :image, tag_ids: [])
   end
 end

@@ -15,6 +15,11 @@
   <p>作り方</p>
   <p><%= @post_recipe.recipe %></p>
 </div>
+<div>
+  <% @post_recipe.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</div>
 <p>投稿日：<%= @post_recipe.created_at.strftime('%Y/%m/%d') %></p>
 <div>
   <%= link_to "/members/#{@post_recipe.member.id}", class:"text-dark" do %>
