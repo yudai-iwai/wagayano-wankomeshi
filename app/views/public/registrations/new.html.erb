@@ -1,66 +1,67 @@
 <div class="container">
   <div class="row">
-    <div class="mt-5 ml-5">
-      <span class="bg-light h3">新規会員登録</span>
+    <div class="mt-5 mb-5">
+      <span class="bg-info h2">新規会員登録</span>
     </div>
   </div>
 </div>
-<%= form_with model: @member, url: member_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :会員名 %><br />
-    <%= f.text_field :name, autofocus: true %>
+<div class="container">
+  <div class="row">
+    <%= form_with model: @member, url: member_registration_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      <table class="ml-5">
+        <tr>
+          <th><%= f.label :会員名 %></th>
+          <td><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :メールアドレス %></th>
+          <td><%= f.email_field :email, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :パスワード %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %>文字以上)</em>
+            <% end %>
+          </th>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :パスワード（確認用） %></th>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :愛犬の名前 %></th>
+          <td><%= f.text_field :dog_name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :愛犬の犬種 %></th>
+          <td><%= f.text_field :dog_breed %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :愛犬の年齢 %></th>
+          <td><%= f.select :dog_age, *[1..50], include_blank: "年齢選択" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :愛犬の性別 %></th>
+          <td><%= f.select :dog_gender, ['オス','メス'], include_blank: "性別選択" %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit "新規登録", class: 'btn btn-success col-10 mt-3' %></td>
+        </tr>
+      </table>
+    <% end %>
   </div>
-  
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認用） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :愛犬の名前 %><br />
-    <%= f.text_field :dog_name %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :愛犬の犬種 %><br />
-    <%= f.text_field :dog_breed %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :愛犬の年齢 %><br />
-    <%= f.select :dog_age, *[1..50], include_blank: "年齢選択" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :愛犬の性別 %><br />
-    <%= f.select :dog_gender, ['オス','メス'], include_blank: "性別選択" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録", class: 'btn btn-success' %>
-  </div>
-<% end %>
-
+</div>
 <div class="container">
   <div class="row">
     <div class="mt-5 ml-5 mb-5">
-      <span class="bg-light h5">既に登録済みの方</span><br>
-      <%= link_to "こちら", new_member_session_path %>からログインしてください。
+      <span class="bg-info h5">既に登録済みの方</span><br>
+      <div class="mt-2 ml-3">
+        <%= link_to "こちら", new_member_session_path %>からログインしてください。
+      </div>
     </div>
   </div>
 </div>

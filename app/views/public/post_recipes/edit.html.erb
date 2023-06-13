@@ -17,6 +17,13 @@
     <%= f.text_area :recipe %>
     <p>わんこメシの画像</p>
     <%= f.file_field :image, accept: "image/*" %>
+    <p>タグ【複数選択可】</p>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+      <% end %>
+    <% end %>
     <%= f.submit "レシピを保存する", class: 'btn btn-success' %>
   <% end %>
 </div>
