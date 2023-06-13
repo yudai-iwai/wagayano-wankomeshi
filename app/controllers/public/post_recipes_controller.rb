@@ -11,7 +11,7 @@ class Public::PostRecipesController < ApplicationController
   end
 
   def index
-    @post_recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_recipes : PostRecipe.all
+    @post_recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_recipes.page(params[:page]) : PostRecipe.all.page(params[:page])
   end
 
   def show
