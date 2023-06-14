@@ -1,11 +1,9 @@
-<div class="mt-4 mb-4">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h3 class="bg-light text-center col-5">会員一覧</h3>
-      </div>
-      <div class="col-8"></div>
+<div class="container">
+  <div class="row mt-4 mb-3">
+    <div class="col-9">
+      <span class="bg-warning h3">会員一覧</span>
     </div>
+    <div class="col-3"></div>
   </div>
 </div>
 <div class="container">
@@ -36,6 +34,9 @@
         </tr>
         <% end %>
       </table>
+      <div class="pagination">
+        <%= paginate @members %>
+      </div>
     </div>
   </div>
 </div>

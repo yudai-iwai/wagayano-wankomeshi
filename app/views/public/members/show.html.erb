@@ -3,7 +3,7 @@
     <div class="col-10">
       <span class="bg-warning h3">会員情報詳細</span>
     </div>
-    <div class="col-2 text-align:right">
+    <div class="col-2 text-right">
       <% unless @member == current_member %>
         <% if current_member.following?(@member) %>
           <%= link_to "フォローを外す", member_relationship_path(@member.id), method: :delete, class: "btn btn-danger" %>

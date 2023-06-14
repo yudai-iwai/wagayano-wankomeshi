@@ -1,6 +1,6 @@
 class Admin::PostRecipesController < ApplicationController
   def index
-    @post_recipes = PostRecipe.all
+    @post_recipes = PostRecipe.all.page(params[:page])
   end
 
   def show
