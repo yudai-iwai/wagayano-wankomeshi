@@ -10,15 +10,15 @@
     <%= form_with model: @member, url: member_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
       <table class="ml-5">
-        <tr>
+        <tr height="50">
           <th><%= f.label :会員名 %></th>
           <td><%= f.text_field :name, autofocus: true %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :メールアドレス %></th>
           <td><%= f.email_field :email, autocomplete: "email" %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th>
             <%= f.label :パスワード %>
             <% if @minimum_password_length %>
@@ -27,27 +27,27 @@
           </th>
           <td><%= f.password_field :password, autocomplete: "new-password" %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :パスワード（確認用） %></th>
           <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :愛犬の名前 %></th>
           <td><%= f.text_field :dog_name %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :愛犬の犬種 %></th>
           <td><%= f.text_field :dog_breed %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :愛犬の年齢 %></th>
-          <td><%= f.select :dog_age, *[1..50], include_blank: "年齢選択" %></td>
+          <td><%= f.select :dog_age, *[1..50], include_blank: "年齢選択" %>歳</td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :愛犬の性別 %></th>
           <td><%= f.select :dog_gender, ['オス','メス'], include_blank: "性別選択" %></td>
         </tr>
-        <tr>
+        <tr height="100">
           <th></th>
           <td><%= f.submit "新規登録", class: 'btn btn-success col-10 mt-3' %></td>
         </tr>

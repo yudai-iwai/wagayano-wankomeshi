@@ -2,12 +2,12 @@ class Public::MembersController < ApplicationController
   before_action :set_member, only: [:followings, :followers]
   
   def index
-    @members = Member.all
+    @members = Member.all.page(params[:page])
   end
 
   def show
     @member = Member.find(params[:id])
-    @post_recipes = @member.post_recipes
+    @post_recipes = @member.post_recipes.page(params[:page])
   end
 
   def my_page

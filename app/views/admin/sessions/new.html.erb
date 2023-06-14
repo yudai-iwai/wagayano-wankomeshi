@@ -9,15 +9,15 @@
   <div class="row">
     <%= form_with model: @admin, url: admin_session_path do |f| %>
       <table class="mt-5 ml-5">
-        <tr>
+        <tr height="50">
           <th><%= f.label :メールアドレス %></th>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <th><%= f.label :パスワード %></th>
           <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
-        <tr>
+        <tr height="100">
           <th></th>
           <td><%= f.submit "ログイン", class:"btn btn-primary col-10 mt-3" %></td>
         </tr>
