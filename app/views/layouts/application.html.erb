@@ -16,7 +16,7 @@
           <a class="navbar-brand p-1"><%= image_tag 'logo4.png', size: '170x80' %></a>
           <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
-              <li class="nav-item-name h5">
+              <li class="nav-item-name h5 bg-primary text-white">
                 ようこそ、<%= current_member.name %>さん！
               </li>
               <li class="nav-item">
@@ -34,16 +34,24 @@
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
-              <div class="search_form">
-                <%= form_with url: search_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :word, placeholder: "フリーワード検索" %>
-                  <%= f.select :range, options_for_select([['犬種'], ['食材']]) %>
-                  <%= f.select :search, options_for_select([["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]]) %>
-                  <%= f.submit "検索", class: "btn btn-success" %>
-                <% end %>
-              </div>
+          </ul>
+        </div>
+      </nav>
+      <div class="container mb-2">
+        <div class="row">
+          <div class="col-7"></div>
+          <div class="col-5 text-right">
+            <%= form_with url: search_path, local: true, method: :get do |f| %>
+              <%= f.text_field :word, placeholder: "フリーワード検索" %>
+              <%= f.select :range, options_for_select([['犬種'], ['食材']]) %>
+              <%= f.select :search, options_for_select([["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]]) %>
+              <%= f.submit "検索", class: "btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
             <% elsif admin_signed_in? %>
-              <li class="nav-item-name h5">
+              <li class="nav-item-name h5 bg-primary text-white">
                 管理者ログイン中！
               </li>
               <li class="nav-item">
@@ -73,13 +81,12 @@
     <main class="mb-auto">
       <%= yield %>
     </main>
-    <footer class="bg-secondary text-black">
+    <footer class="bg-secondary text-dark">
       <div class="container">
         <div class="row">
-          <div class="col-md-9"></div>
-          <div class="col-md-3 mt-2 mb-2">
-            <p>手作り食のレシピを共有する<br>
-               コミュニティサイト</p>
+          <div class="col-12 text-center mt-2">
+            <div>手作り食のレシピを共有する<br>
+               コミュニティサイト</div>
             <%= image_tag 'logo4.png', size: '170x80' %>
           </div>
         </div>
