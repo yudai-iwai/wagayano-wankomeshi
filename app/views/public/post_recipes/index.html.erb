@@ -13,7 +13,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <table class="table table-borderd">
+      <table class="table align-middle table-borderd table-hover">
         <tr class="bg-light">
           <th class="col-4">タイトル</th>
           <th class="col-3">会員名</th>
@@ -22,7 +22,7 @@
           <th class="col-2">コメント・いいね</th>
         </tr>
         <% @post_recipes.each do |post_recipe| %>
-          <tr valign="middle">
+          <tr class="align-middle">
             <td class="border-bottom">
               <%= link_to post_recipe_path(post_recipe.id), class:"text-dark" do %>
                 <% if post_recipe.image.attached? %>

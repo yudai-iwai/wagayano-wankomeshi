@@ -1,96 +1,108 @@
 <div class="container">
+  <div class="row mt-4 mb-3">
+    <div class="col-9">
+      <span class="bg-warning h3">マイページ</span>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<div class="container">
   <div class="row">
-    <div class="mt-5 ml-5">
-      <span class="bg-light h3">マイページ</span>
+    <div class="col-4">
+      <div>
+        <% if @member.image.attached? %>
+          <%= image_tag @member.image, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image_member', size: "200x200" %>
+        <% end %>
+      </div>
+      <div class="mt-2 mb-2 h5">
+        フォロー：
+        <%= link_to followings_member_path(@member) do %>
+          <%= @member.followings.count %>
+        <% end %>
+      </div>
+      <div class="mt-2 mb-2 h5">
+        フォロワー：
+        <%= link_to followers_member_path(@member) do %>
+          <%= @member.followers.count %>
+        <% end %>
+      </div>
+      <div class="mt-2 mb-2 h5">
+        <%= link_to "『いいね』したレシピを見る", favorites_member_path(@member) %>
+      </div>
+    </div>
+    <div class="col-8">
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-info" style="width: 30%">会員名</th>
+          <td style="width: 70%"><%= @member.name %></td>
+        </tr>
+        <tr>
+          <th class="table-info">メールアドレス</th>
+          <td><%= @member.email %></td>
+        </tr>
+        <tr>
+          <th class="table-info">愛犬の名前</th>
+          <td><%= @member.dog_name %></td>
+        </tr>
+        <tr>
+          <th class="table-info">犬種</th>
+          <td><%= @member.dog_breed %></td>
+        </tr>
+        <tr>
+          <th class="table-info">年齢</th>
+          <td><%= @member.dog_age %>歳</td>
+        </tr>
+        <tr>
+          <th class="table-info">性別</th>
+          <td><%= @member.dog_gender %></td>
+        </tr>
+      </table>
+      <div class="mt-5 text-right">
+        <%= link_to "登録情報を編集する", edit_member_path(@member.id), class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 </div>
-<div>
-  <% if @member.image.attached? %>
-    <%= image_tag @member.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image_member', size: "200x200" %>
-  <% end %>
+<div class="container">
+  <div class="row mt-5 mb-3">
+    <div class="col">
+      <span class="bg-warning h3 col-12"><%= @member.name %>さんが投稿したレシピ</span>
+    </div>
+  </div>
 </div>
-<div>
-  フォロー：
-  <%= link_to followings_member_path(@member) do %>
-    <%= @member.followings.count %>
-  <% end %>
-</div>
-<div>
-  フォロワー：
-  <%= link_to followers_member_path(@member) do %>
-    <%= @member.followers.count %>
-  <% end %>
-</div>
-<div>
-  <%= link_to "『いいね』したレシピを見る", favorites_member_path(@member) %>
-</div>
-<table>
-  <tr>
-    <th>会員名</th>
-    <td><%= @member.name %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @member.email %></td>
-  </tr>
-  <tr>
-    <th>愛犬の名前</th>
-    <td><%= @member.dog_name %></td>
-  </tr>
-  <tr>
-    <th>愛犬の犬種</th>
-    <td><%= @member.dog_breed %></td>
-  </tr>
-  <tr>
-    <th>愛犬の年齢</th>
-    <td><%= @member.dog_age %>歳</td>
-  </tr>
-  <tr>
-    <th>愛犬の性別</th>
-    <td><%= @member.dog_gender %></td>
-  </tr>
-</table>
-<div>
-  <%= link_to "登録情報を編集する", edit_member_path(@member.id), class: "btn btn-primary" %>
-</div>
-<div class="mt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <table class="table table-borderd">
-          <tr class="table-borderless">
-            <th>
-              <span class="bg-light h3 col-12"><%= @member.name %>さんが投稿したレシピ</span>
-            </th>
-          </tr>
-          <tr class="bg-light">
-            <th class="col-3">タイトル</th>
-            <th class="col-3">紹介文</th>
-            <th class="col-3">コメント・いいね</th>
-          </tr>
-          <% @post_recipes.each do |post_recipe| %>
-            <tr>
-              <td class="border-bottom">
-                <%= link_to post_recipe_path(post_recipe.id), class:"text-dark" do %>
-                  <% if post_recipe.image.attached? %>
-                    <%= image_tag post_recipe.image, size: "100x100" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %>
-                  <% end %>
-                  <%= post_recipe.title %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-borderd table-hover">
+        <tr class="bg-light">
+          <th class="col-3">タイトル</th>
+          <th class="col-3">紹介文</th>
+          <th class="col-3">コメント・いいね</th>
+        </tr>
+        <% @post_recipes.each do |post_recipe| %>
+          <tr>
+            <td class="border-bottom">
+              <%= link_to post_recipe_path(post_recipe.id), class:"text-dark" do %>
+                <% if post_recipe.image.attached? %>
+                  <%= image_tag post_recipe.image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
                 <% end %>
-              </td>
-              <td class="border-bottom"><%= post_recipe.introduction %></td>
-              <td class="border-bottom">
-                <%= link_to "コメント：#{post_recipe.post_comments.count}件", post_recipe_path(post_recipe.id) %><br>
-                <%= link_to "いいね：#{post_recipe.favorites.count}件", post_recipe_path(post_recipe.id) %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
+                <%= post_recipe.title %>
+              <% end %>
+            </td>
+            <td class="border-bottom"><%= post_recipe.introduction %></td>
+            <td class="border-bottom">
+              <%= link_to "コメント：#{post_recipe.post_comments.count}件", post_recipe_path(post_recipe.id) %><br>
+              <%= link_to "いいね：#{post_recipe.favorites.count}件", post_recipe_path(post_recipe.id) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="pagination">
+        <%= paginate @post_recipes %>
       </div>
     </div>
   </div>

@@ -9,15 +9,15 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <table class="table table-borderd">
+      <table class="table table-borderd table-hover">
         <% if @members.exists? %>
+          <tr class="bg-light">
+            <th class="col-4">会員名</th>
+            <th class="col-4">愛犬の犬種</th>
+            <th class="col-3">フォロー・フォロワー</th>
+            <th class="col-1"></th>
+          </tr>
           <% @members.each do |member| %>
-            <tr class="bg-light">
-              <th class="col-4">会員名</th>
-              <th class="col-4">愛犬の犬種</th>
-              <th class="col-3">フォロー・フォロワー</th>
-              <th class="col-1"></th>
-            </tr>
             <tr>
               <td class="border-bottom">
                 <% if member.image.attached? %>

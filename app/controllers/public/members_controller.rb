@@ -12,7 +12,7 @@ class Public::MembersController < ApplicationController
 
   def my_page
     @member = current_member
-    @post_recipes = current_member.post_recipes
+    @post_recipes = current_member.post_recipes.page(params[:page])
   end
 
   def edit
