@@ -7,19 +7,9 @@
       <span class="text-success h3"><%= @post_recipe.title %></span>
     </div>
     <div class="col-5 text-right">
-      <% if @post_recipe.favorited_by?(current_member) %>
-        <div class="h4">
-          <%= link_to post_recipe_favorites_path(@post_recipe), method: :delete do %>
-            ♥<%= @post_recipe.favorites.count %>いいね
-          <% end %>
-        </div>
-      <% else %>
-        <div class="h4">
-          <%= link_to post_recipe_favorites_path(@post_recipe), method: :post do %>
-            ♡<%= @post_recipe.favorites.count %>いいね
-          <% end %>
-        </div>
-      <% end %>
+      <div id="favorite_buttons_<%= @post_recipe.id %>">
+        <%= render 'favorite', post_recipe: @post_recipe %>
+      </div>
     </div>
   </div>
 </div>

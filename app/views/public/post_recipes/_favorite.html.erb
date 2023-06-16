@@ -1,0 +1,13 @@
+<% if post_recipe.favorited_by?(current_member) %>
+  <div class="h4">
+    <%= link_to post_recipe_favorites_path(post_recipe), method: :delete, remote: true do %>
+      ♥<%= post_recipe.favorites.count %>いいね
+    <% end %>
+  </div>
+<% else %>
+  <div class="h4">
+    <%= link_to post_recipe_favorites_path(post_recipe), method: :post, remote: true do %>
+      ♡<%= post_recipe.favorites.count %>いいね
+    <% end %>
+  </div>
+<% end %>
