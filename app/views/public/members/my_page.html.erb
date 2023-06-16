@@ -1,3 +1,6 @@
+<div class="bg-success text-white">
+  <%= flash[:notice] %>
+</div>
 <div class="container">
   <div class="row mt-4 mb-3">
     <div class="col-9">
@@ -60,7 +63,11 @@
         </tr>
       </table>
       <div class="mt-5 text-right">
-        <%= link_to "登録情報を編集する", edit_member_path(@member.id), class: "btn btn-primary" %>
+        <% if @member.email == 'wagayano@wankomeshi' %>
+          <span class="bg-danger h5">※ゲストユーザーは、会員情報の編集・退会処理はできません。</span>
+        <% else %>
+          <%= link_to "登録情報を編集する", edit_member_path(@member.id), class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

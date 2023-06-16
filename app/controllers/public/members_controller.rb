@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!
   before_action :set_member, only: [:followings, :followers]
   
   def index
@@ -22,6 +23,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     @member.update(member_params)
+    flash[:notice] = "会員情報を編集しました！"
     redirect_to my_page_members_path
   end
 
@@ -32,6 +34,7 @@ class Public::MembersController < ApplicationController
     @member = current_member
     @member.update(is_deleted: true)
     reset_session
+    flash[:notice] = "会員情報が削除されました。再度ご利用いただく場合には、新規会員登録のお手続きが必要となります。"
     redirect_to root_path
   end
 

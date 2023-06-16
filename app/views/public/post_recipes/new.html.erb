@@ -1,3 +1,13 @@
+<% if @post_recipe.errors.any? %>
+  <span class="bg-danger h5">
+    <%= @post_recipe.errors.count %>件のエラーがあります
+  </span>
+  <ul>
+    <% @post_recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container">
   <div class="row mt-4 mb-3">
     <div class="col-9">
@@ -43,7 +53,7 @@
         </tr>
       </table>
       <div class="mt-5 mb-5 text-right">
-        <%= f.submit "レシピを公開する", class: 'btn btn-success' %></td>
+        <%= f.submit "レシピを公開する", class: 'btn btn-success' %>
       </div>
     <% end %>
   </div>

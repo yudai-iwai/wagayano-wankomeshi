@@ -1,4 +1,5 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_member!
   def create
     post_recipe = PostRecipe.find(params[:post_recipe_id])
     comment = current_member.post_comments.new(post_comment_params)

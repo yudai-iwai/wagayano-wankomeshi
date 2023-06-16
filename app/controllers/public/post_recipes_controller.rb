@@ -1,4 +1,5 @@
 class Public::PostRecipesController < ApplicationController
+  before_action :authenticate_member!
   def new
     @post_recipe = PostRecipe.new
   end
@@ -6,8 +7,12 @@ class Public::PostRecipesController < ApplicationController
   def create
     @post_recipe = PostRecipe.new(post_recipe_params)
     @post_recipe.member_id = current_member.id
-    @post_recipe.save
-    redirect_to post_recipe_path(@post_recipe.id)
+    if @post_recipe.save
+       flash[:notice] = "レシピを公開しました！"
+       redirect_to post_recipe_path(@post_recipe.id)
+    else
+       render :new
+    end
   end
 
   def index
@@ -22,6 +27,7 @@ class Public::PostRecipesController < ApplicationController
   def destroy
     post_recipe = PostRecipe.find(params[:id])
     post_recipe.destroy
+    flash[:notice] = "レシピを削除しました！"
     redirect_to post_recipes_path
   end
   
@@ -32,6 +38,7 @@ class Public::PostRecipesController < ApplicationController
   def update
     post_recipe = PostRecipe.find(params[:id])
     post_recipe.update(post_recipe_params)
+    flash[:notice] = "レシピを編集しました！"
     redirect_to post_recipe_path(post_recipe.id)
   end
 

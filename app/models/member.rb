@@ -28,6 +28,11 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   
+  validates :dog_name, presence: true
+  validates :dog_breed, presence: true
+  validates :dog_age, presence: true
+  validates :dog_gender, presence: true
+  
   def follow(member_id)
     relationships.create(followed_id: member_id)
   end

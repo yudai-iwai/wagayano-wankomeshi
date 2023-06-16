@@ -1,29 +1,50 @@
 <div class="container">
-  <div class="row">
-    <div class="mt-5 ml-5">
-      <span class="bg-light h3">レシピの編集</span>
+  <div class="row mt-4 mb-3">
+    <div class="col-9">
+      <span class="bg-warning h3">レシピの編集</span>
     </div>
+    <div class="col-3"></div>
   </div>
 </div>
-<div>
-  <%= form_with model: @post_recipe, url:post_recipe_path(@post_recipe.id), method: :patch do |f| %>
-    <p>タイトル</p>
-    <%= f.text_area :title, autofocus: true %>
-    <p>紹介文</p>
-    <%= f.text_area :introduction %>
-    <p>材料・分量</p>
-    <%= f.text_area :material_quantity %>
-    <p>作り方</p>
-    <%= f.text_area :recipe %>
-    <p>わんこメシの画像</p>
-    <%= f.file_field :image, accept: "image/*" %>
-    <p>タグ【複数選択可】</p>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-      <%= tag.label do %>
-        <%= tag.check_box %>
-        <%= tag.text %>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <%= form_with model: @post_recipe, url:post_recipe_path(@post_recipe.id), method: :patch do |f| %>
+      <table class="ml-5">
+        <tr height="100">
+          <th style="width: 20%">タイトル</th>
+          <td style="width: 80%"><%= f.text_area :title, :size => "50x2", autofocus: true %></td>
+        </tr>
+        <tr height="100">
+          <th>紹介文</th>
+          <td><%= f.text_area :introduction, :size => "50x5" %></td>
+        </tr>
+        <tr height="100">
+          <th>材料・分量</th>
+          <td><%= f.text_area :material_quantity, :size => "50x10" %></td>
+        </tr>
+        <tr height="100">
+          <th>作り方</th>
+          <td><%= f.text_area :recipe, :size => "50x10" %></td>
+        </tr>
+        <tr height="100">
+          <th>わんこメシの画像</th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr height="100">
+          <th>タグ【複数選択可】</th>
+          <td>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <%= tag.label do %>
+                <%= tag.check_box %>
+                <%= tag.text %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="mt-5 mb-5 text-right">
+        <%= f.submit "レシピを保存する", class: 'btn btn-success' %>
+      </div>
     <% end %>
-    <%= f.submit "レシピを保存する", class: 'btn btn-success' %>
-  <% end %>
+  </div>
 </div>

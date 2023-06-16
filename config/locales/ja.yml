@@ -14,3 +14,23 @@ ja:
       x_days: "%{count}日"
       x_months: "%{count}ヶ月"
       x_years: "%{count}年"
+  activerecord:
+    attributes:
+      member:
+        name: 会員名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        dog_name: 愛犬の名前
+        dog_breed: 愛犬の犬種
+        dog_age: 愛犬の年齢
+        dog_gender: 愛犬の性別
+      post_recipe:
+        title: タイトル
+        introduction: 紹介文
+        material_quantity: 材料・分量
+        recipe: 作り方
+  activemodel:   # Formオブジェクトを用いた場合
+     attributes:
+       order_object:
+         post_code: 郵便番号

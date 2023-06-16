@@ -29,7 +29,7 @@ class Public::SessionsController < Devise::SessionsController
   def new_guest
     member = Member.guest
     sign_in member
-    redirect_to post_recipes_path
+    redirect_to post_recipes_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   protected

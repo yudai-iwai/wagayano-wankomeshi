@@ -1,4 +1,5 @@
 class Public::SearchesController < ApplicationController
+  before_action :authenticate_member!
   def search
     @range = params[:range]
     if @range == "犬種"
