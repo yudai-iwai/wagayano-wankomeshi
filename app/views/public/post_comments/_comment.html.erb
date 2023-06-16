@@ -7,7 +7,7 @@
   <% end %>
 </div>
 <table class="table table-border table-hover">
-  <% post_recipe.post_comments.each do |post_comment| %>
+  <% post_recipe.post_comments.reverse.each do |post_comment| %>
     <tr>
       <td>
         <%= link_to member_path(post_comment.member.id), class:"text-dark" do %>

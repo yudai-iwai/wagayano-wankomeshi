@@ -1,0 +1,21 @@
+<table class="table table-border table-hover">
+  <% post_recipe.post_comments.reverse.each do |post_comment| %>
+    <tr>
+      <td>
+        <%= link_to admin_member_path(post_comment.member.id), class:"text-dark" do %>
+          <% if post_comment.member.image.attached? %>
+            <%= image_tag post_comment.member.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'no_image_member', size: "100x100" %>
+          <% end %>
+          <%= post_comment.member.name %>
+        <% end %>
+      </td>
+      <td><%= post_comment.comment %></td>
+      <td><%= time_ago_in_words(post_comment.created_at) %>前</td>
+      <td>
+        <%= link_to "削除", admin_post_recipe_post_comment_path(post_comment.post_recipe, post_comment), method: :delete, remote: true, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
