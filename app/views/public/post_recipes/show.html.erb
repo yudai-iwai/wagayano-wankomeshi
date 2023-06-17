@@ -63,7 +63,7 @@
   <div class="row mt-5">
     <div class="col-3">
       <div class="h5 border-bottom">
-        コメント件数：<%= @post_recipe.post_comments.count %>件
+        コメント件数：<span id="comment_count"><%= @post_recipe.post_comments.count %></span>
       </div>
     </div>
     <div class="col-9">
