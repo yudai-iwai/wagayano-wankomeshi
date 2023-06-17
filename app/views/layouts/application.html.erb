@@ -68,7 +68,7 @@
                 <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+                <%= link_to "サイト紹介", about_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link text-dark' %>
@@ -81,13 +81,13 @@
     <main class="mb-auto">
       <%= yield %>
     </main>
-    <footer class="bg-secondary text-dark">
+    <footer class="bg-secondary text-body">
       <div class="container">
         <div class="row">
-          <div class="col-12 text-center mt-2">
-            <div>手作り食のレシピを共有する<br>
-               コミュニティサイト</div>
-            <%= image_tag 'logo4.png', size: '170x80' %>
+          <div class="col-12 mt-3 d-flex justify-content-center">
+            <span class="h6">手作り食のレシピを共有する<br>
+               コミュニティサイト</span>
+            <div><%= image_tag 'logo4.png', size: '170x80' %></div>
           </div>
         </div>
       </div>
