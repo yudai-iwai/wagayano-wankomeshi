@@ -59,7 +59,10 @@
     </div>
     <div class="col-9">
       <div id="comments_area">
-        <%= render "admin/post_comments/comment", post_recipe: @post_recipe %>
+        <%= render "admin/post_comments/comment", post_recipe: @post_recipe, post_comments: @post_comments %>
+      </div>
+      <div class="pagination">
+        <%= paginate @post_comments %>
       </div>
     </div>
   </div>

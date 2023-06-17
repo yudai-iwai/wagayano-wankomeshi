@@ -6,6 +6,7 @@ class Admin::PostRecipesController < ApplicationController
 
   def show
     @post_recipe = PostRecipe.find(params[:id])
+    @post_comments = @post_recipe.post_comments.page(params[:page])
   end
 
   def destroy

@@ -22,6 +22,7 @@ class Public::PostRecipesController < ApplicationController
   def show
     @post_recipe = PostRecipe.find(params[:id])
     @post_comment = PostComment.new
+    @post_comments = @post_recipe.post_comments.page(params[:page])
   end
 
   def destroy
@@ -30,11 +31,11 @@ class Public::PostRecipesController < ApplicationController
     flash[:notice] = "レシピを削除しました！"
     redirect_to post_recipes_path
   end
-  
+
   def edit
     @post_recipe = PostRecipe.find(params[:id])
   end
-  
+
   def update
     post_recipe = PostRecipe.find(params[:id])
     post_recipe.update(post_recipe_params)
