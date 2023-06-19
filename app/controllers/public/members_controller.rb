@@ -1,7 +1,7 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :set_member, only: [:followings, :followers]
-  
+
   def index
     @members = Member.all.page(params[:page])
   end
@@ -43,7 +43,7 @@ class Public::MembersController < ApplicationController
     favorites = Favorite.where(member_id: @member.id).pluck(:post_recipe_id)
     @favorite_post_recipes = PostRecipe.find(favorites)
   end
-  
+
   def followings
     @members = @member.followings.page(params[:page])
   end
@@ -51,7 +51,7 @@ class Public::MembersController < ApplicationController
   def followers
     @members = @member.followers.page(params[:page])
   end
-  
+
   private
 
   def member_params
