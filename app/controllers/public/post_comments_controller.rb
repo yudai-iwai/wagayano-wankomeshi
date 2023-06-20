@@ -8,6 +8,7 @@ class Public::PostCommentsController < ApplicationController
     comment.save
     @post_recipe = PostRecipe.find(params[:post_recipe_id])
     @post_comment = PostComment.new
+    @post_comments = @post_recipe.post_comments
   end
   
   def destroy
@@ -15,6 +16,7 @@ class Public::PostCommentsController < ApplicationController
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
     @post_comment = PostComment.new
+    @post_comments = @post_recipe.post_comments
   end
   
   private

@@ -22,7 +22,7 @@ class Public::PostRecipesController < ApplicationController
   def show
     @post_recipe = PostRecipe.find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = @post_recipe.post_comments.page(params[:page])
+    @post_comments = @post_recipe.post_comments
   end
 
   def destroy

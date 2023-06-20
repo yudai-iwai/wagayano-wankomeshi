@@ -4,5 +4,6 @@ class Admin::PostCommentsController < ApplicationController
   def destroy
     @post_recipe = PostRecipe.find(params[:post_recipe_id])
     PostComment.find(params[:id]).destroy
+    @post_comments = @post_recipe.post_comments
   end
 end
