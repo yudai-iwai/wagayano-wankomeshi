@@ -25,9 +25,9 @@
             <td class="border-bottom align-middle">
               <%= link_to admin_post_recipe_path(post_recipe.id), class:"text-dark" do %>
                 <% if post_recipe.image.attached? %>
-                  <%= image_tag post_recipe.image, size: "100x100" %>
+                  <%= image_tag post_recipe.image, size: "100x100" %><br>
                 <% else %>
-                  <%= image_tag 'no_image', size: "100x100" %>
+                  <%= image_tag 'no_image', size: "100x100" %><br>
                 <% end %>
                 <%= post_recipe.title %>
               <% end %>

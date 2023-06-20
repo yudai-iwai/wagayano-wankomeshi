@@ -16,7 +16,7 @@
             </tr>
             <% @members.each do |member| %>
               <tr>
-                <td class="border-bottom">
+                <td class="border-bottom align-middle">
                   <% if member.image.attached? %>
                     <%= image_tag member.image, size: "100x100" %>
                   <% else %>
@@ -27,9 +27,9 @@
                     <p>＜退会済み＞</p>
                   <% end %>
                 </td>
-                <td class="border-bottom"><%= member.dog_breed %></td>
-                <td class="border-bottom">
-                  <%= link_to "Show", member_path(member.id) %>
+                <td class="border-bottom align-middle"><%= member.dog_breed %></td>
+                <td class="border-bottom align-middle">
+                  <%= link_to "詳細", member_path(member.id) %>
                 </td>
               </tr>
             <% end %>
@@ -41,7 +41,7 @@
             </tr>
             <% @post_recipes.each do |post_recipe| %>
               <tr>
-                <td class="border-bottom">
+                <td class="border-bottom align-middle">
                   <% if post_recipe.image.attached? %>
                     <%= image_tag post_recipe.image, size: "100x100" %>
                   <% else %>
@@ -49,8 +49,8 @@
                   <% end %>
                   <%= post_recipe.title %>
                 </td>
-                <td class="border-bottom"><%= post_recipe.member.name %></td>
-                <td class="border-bottom"><%= link_to "Show", post_recipe_path(post_recipe.id) %></td>
+                <td class="border-bottom align-middle"><%= post_recipe.member.name %></td>
+                <td class="border-bottom align-middle"><%= link_to "Show", post_recipe_path(post_recipe.id) %></td>
               </tr>
             <% end %>
           <% end %>

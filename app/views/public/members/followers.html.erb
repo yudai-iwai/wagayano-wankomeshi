@@ -21,11 +21,11 @@
             <tr>
               <td class="border-bottom align-middle">
                 <% if member.image.attached? %>
-                  <%= image_tag member.image, size: "100x100" %>
+                  <%= image_tag member.image, size: "100x100" %><br>
                 <% else %>
-                  <%= image_tag 'no_image_member', size: "100x100" %>
+                  <%= image_tag 'no_image_member', size: "100x100" %><br>
                 <% end %>
-                <%= member.name %><br>
+                <%= member.name %>
                 <% if member.is_deleted == true %>
                   <p>＜退会済み＞</p>
                 <% end %>

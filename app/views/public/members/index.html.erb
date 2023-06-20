@@ -23,11 +23,11 @@
             <td class="border-bottom align-middle">
               <%= link_to member_path(member.id), class:"text-dark" do %>
                 <% if member.image.attached? %>
-                  <%= image_tag member.image, size: "100x100" %>
+                  <%= image_tag member.image, size: "100x100" %><br>
                 <% else %>
-                  <%= image_tag 'no_image_member', size: "100x100" %>
+                  <%= image_tag 'no_image_member', size: "100x100" %><br>
                 <% end %>
-                <%= member.name %><br>
+                <%= member.name %>
               <% end %>
               <% if member.is_deleted == true %>
                 <p>＜退会済み＞</p>

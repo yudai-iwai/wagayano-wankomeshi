@@ -28,7 +28,8 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   
-  validates :dog_name, presence: true
+  validates :name, presence: true, length: { maximum: 15 }
+  validates :dog_name, presence: true, length: { maximum: 15 }
   validates :dog_breed, presence: true
   validates :dog_age, presence: true
   validates :dog_gender, presence: true

@@ -12,9 +12,9 @@
       <td>
         <%= link_to member_path(post_comment.member.id), class:"text-dark" do %>
           <% if post_comment.member.image.attached? %>
-            <%= image_tag post_comment.member.image, size: "100x100" %>
+            <%= image_tag post_comment.member.image, size: "100x100" %><br>
           <% else %>
-            <%= image_tag 'no_image_member', size: "100x100" %>
+            <%= image_tag 'no_image_member', size: "100x100" %><br>
           <% end %>
           <%= post_comment.member.name %>
         <% end %>
