@@ -20,7 +20,7 @@
         </tr>
         <% @members.each do |member| %>
           <tr>
-            <td class="border-bottom">
+            <td class="border-bottom align-middle">
               <%= link_to member_path(member.id), class:"text-dark" do %>
                 <% if member.image.attached? %>
                   <%= image_tag member.image, size: "100x100" %>
@@ -33,11 +33,11 @@
                 <p>＜退会済み＞</p>
               <% end %>
             </td>
-            <td class="border-bottom"><%= member.dog_name %></td>
-            <td class="border-bottom"><%= member.dog_breed %></td>
-            <td class="border-bottom"><%= member.dog_age %>歳</td>
-            <td class="border-bottom"><%= member.dog_gender %></td>
-            <td class="border-bottom">
+            <td class="border-bottom align-middle"><%= member.dog_name %></td>
+            <td class="border-bottom align-middle"><%= member.dog_breed %></td>
+            <td class="border-bottom align-middle"><%= member.dog_age %>歳</td>
+            <td class="border-bottom align-middle"><%= member.dog_gender %></td>
+            <td class="border-bottom align-middle">
               フォロー：<%= member.followings.count %><br>
               フォロワー：<%= member.followers.count %>
             </td>

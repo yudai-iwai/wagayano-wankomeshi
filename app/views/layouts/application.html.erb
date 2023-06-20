@@ -10,10 +10,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
+    <header class="shadow-sm", style="background: linear-gradient(#AAAAAA, #EEEEEE);">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-1"><%= image_tag 'logo4.png', size: '170x80' %></a>
+          <a class="navbar-brand p-1"><%= image_tag 'logo4.png', size: '200x80' %></a>
           <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
               <li class="nav-item-name h5 bg-primary text-white">
@@ -34,22 +34,6 @@
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="container mb-2">
-        <div class="row">
-          <div class="col-7"></div>
-          <div class="col-5 text-right">
-            <%= form_with url: search_path, local: true, method: :get do |f| %>
-              <%= f.text_field :word, placeholder: "フリーワード検索" %>
-              <%= f.select :range, options_for_select([['犬種'], ['食材']]) %>
-              <%= f.select :search, options_for_select([["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]]) %>
-              <%= f.submit "検索", class: "btn btn-success" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
             <% elsif admin_signed_in? %>
               <li class="nav-item-name h5 bg-primary text-white">
                 管理者ログイン中！
@@ -77,17 +61,32 @@
           </ul>
         </div>
       </nav>
+      <% if member_signed_in? %>
+        <div class="container mb-2">
+          <div class="row">
+            <div class="col-7"></div>
+            <div class="col-5 text-right">
+              <%= form_with url: search_path, local: true, method: :get do |f| %>
+                <%= f.text_field :word, placeholder: "フリーワード検索" %>
+                <%= f.select :range, options_for_select([['犬種'], ['食材']]) %>
+                <%= f.select :search, options_for_select([["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]]) %>
+                <%= f.submit "検索", class: "btn btn-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </header>
     <main class="mb-auto">
       <%= yield %>
     </main>
-    <footer class="bg-secondary text-body">
+    <footer style="background: linear-gradient(#EEEEEE, #AAAAAA); height: 500px;">
       <div class="container">
         <div class="row">
           <div class="col-12 mt-3 d-flex justify-content-center">
-            <span class="h6">手作り食のレシピを共有する<br>
+            <span class="h6">愛犬の手作り食レシピを共有する<br>
                コミュニティサイト</span>
-            <div><%= image_tag 'logo4.png', size: '170x80' %></div>
+            <div><%= image_tag 'logo4.png', size: '200x80' %></div>
           </div>
         </div>
       </div>

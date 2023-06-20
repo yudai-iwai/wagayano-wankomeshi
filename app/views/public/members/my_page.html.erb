@@ -90,7 +90,7 @@
         </tr>
         <% @post_recipes.each do |post_recipe| %>
           <tr>
-            <td class="border-bottom">
+            <td class="border-bottom align-middle">
               <%= link_to post_recipe_path(post_recipe.id), class:"text-dark" do %>
                 <% if post_recipe.image.attached? %>
                   <%= image_tag post_recipe.image, size: "100x100" %>
@@ -100,8 +100,8 @@
                 <%= post_recipe.title %>
               <% end %>
             </td>
-            <td class="border-bottom"><%= post_recipe.introduction %></td>
-            <td class="border-bottom">
+            <td class="border-bottom align-middle"><%= post_recipe.introduction %></td>
+            <td class="border-bottom align-middle">
               <%= link_to "コメント：#{post_recipe.post_comments.count}件", post_recipe_path(post_recipe.id) %><br>
               <%= link_to "いいね：#{post_recipe.favorites.count}件", post_recipe_path(post_recipe.id) %>
             </td>

@@ -27,7 +27,7 @@
           <th class="col-2">フォロー・フォロワー</th>
         </tr>
         <tr>
-          <td class="border-bottom">
+          <td class="border-bottom align-middle">
             <% if @member.image.attached? %>
               <%= image_tag @member.image, size: "100x100" %>
             <% else %>
@@ -38,11 +38,11 @@
               <p>＜退会済み＞</p>
             <% end %>
           </td>
-          <td class="border-bottom"><%= @member.dog_name %></td>
-          <td class="border-bottom"><%= @member.dog_breed %></td>
-          <td class="border-bottom"><%= @member.dog_age %>歳</td>
-          <td class="border-bottom"><%= @member.dog_gender %></td>
-          <td class="border-bottom">
+          <td class="border-bottom align-middle"><%= @member.dog_name %></td>
+          <td class="border-bottom align-middle"><%= @member.dog_breed %></td>
+          <td class="border-bottom align-middle"><%= @member.dog_age %>歳</td>
+          <td class="border-bottom align-middle"><%= @member.dog_gender %></td>
+          <td class="border-bottom align-middle">
             フォロー：
             <%= link_to followings_member_path(@member) do %>
               <%= @member.followings.count %><br>
@@ -75,7 +75,7 @@
         </tr>
         <% @post_recipes.each do |post_recipe| %>
           <tr>
-            <td class="border-bottom">
+            <td class="border-bottom align-middle">
               <%= link_to post_recipe_path(post_recipe.id), class:"text-dark" do %>
                 <% if post_recipe.image.attached? %>
                   <%= image_tag post_recipe.image, size: "100x100" %>
@@ -85,8 +85,8 @@
                 <%= post_recipe.title %>
               <% end %>
             </td>
-            <td class="border-bottom"><%= post_recipe.introduction %></td>
-            <td class="border-bottom">
+            <td class="border-bottom align-middle"><%= post_recipe.introduction %></td>
+            <td class="border-bottom align-middle">
               <%= link_to "コメント：#{post_recipe.post_comments.count}件", post_recipe_path(post_recipe.id) %><br>
               <%= link_to "いいね：#{post_recipe.favorites.count}件", post_recipe_path(post_recipe.id) %>
             </td>
