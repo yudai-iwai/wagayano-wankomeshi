@@ -1,0 +1,12 @@
+<div>
+  <% if model.errors.any? %>
+    <span class="bg-danger h5">
+      <%= model.errors.count %>件のエラーがあります
+    </span>
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

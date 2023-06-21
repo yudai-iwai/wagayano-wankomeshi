@@ -2,12 +2,15 @@ class Public::PostCommentsController < ApplicationController
   before_action :authenticate_member!
   
   def create
-    post_recipe = PostRecipe.find(params[:post_recipe_id])
-    comment = current_member.post_comments.new(post_comment_params)
-    comment.post_recipe_id = post_recipe.id
-    comment.save
     @post_recipe = PostRecipe.find(params[:post_recipe_id])
-    @post_comment = PostComment.new
+    @comment = current_member.post_comments.new(post_comment_params)
+    @comment.post_recipe_id = @post_recipe.id
+    if @comment.save
+       @post_recipe = PostRecipe.find(params[:post_recipe_id])
+       @post_comment = PostComment.new
+    else
+       render 'error'
+    end
     @post_comments = @post_recipe.post_comments
   end
   

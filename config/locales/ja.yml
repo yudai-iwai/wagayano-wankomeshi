@@ -30,6 +30,8 @@ ja:
         introduction: 紹介文
         material_quantity: 材料・分量
         recipe: 作り方
+      post_comment:
+        comment: コメント
   activemodel:   # Formオブジェクトを用いた場合
      attributes:
        order_object:

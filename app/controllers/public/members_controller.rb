@@ -42,6 +42,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_recipe_id)
     @favorite_post_recipes = PostRecipe.find(favorites)
+    @favorite_post_recipes = Kaminari.paginate_array(@favorite_post_recipes).page(params[:page])
   end
 
   def followings

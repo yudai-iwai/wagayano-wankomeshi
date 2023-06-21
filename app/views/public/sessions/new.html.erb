@@ -1,3 +1,4 @@
+<span class="bg-danger h5"><%= alert %></span>
 <div class="container">
   <div class="row">
     <div class="mt-5 mb-5">
@@ -15,6 +16,7 @@
 <div class="container">
   <div class="row">
     <%= form_with model: @member, url: member_session_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
       <table class="mt-5 ml-5">
         <tr height="50">
           <th><%= f.label :メールアドレス %></th>
