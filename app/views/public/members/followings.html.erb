@@ -10,38 +10,34 @@
   <div class="row">
     <div class="col">
       <table class="table table-borderd table-hover">
-        <% if @members.exists? %>
-          <tr class="bg-light">
-            <th class="col-4">会員名</th>
-            <th class="col-4">愛犬の犬種</th>
-            <th class="col-3">フォロー・フォロワー</th>
-            <th class="col-1"></th>
+        <tr class="bg-light">
+          <th class="col-4">会員名</th>
+          <th class="col-4">愛犬の犬種</th>
+          <th class="col-3">フォロー・フォロワー</th>
+          <th class="col-1"></th>
+        </tr>
+        <% @members.each do |member| %>
+          <tr>
+            <td class="border-bottom align-middle">
+              <% if member.image.attached? %>
+                <%= image_tag member.image, size: "100x100" %><br>
+              <% else %>
+                <%= image_tag 'no_image_member', size: "100x100" %><br>
+              <% end %>
+              <%= member.name %>
+              <% if member.is_deleted == true %>
+                <p>＜退会済み＞</p>
+              <% end %>
+            </td>
+            <td class="border-bottom align-middle"><%= member.dog_breed %></td>
+            <td class="border-bottom align-middle">
+              フォロー数：<%= member.followings.count %><br>
+              フォロワー数：<%= member.followers.count %>
+            </td>
+            <td class="border-bottom align-middle">
+              <%= link_to "詳細", member_path(member.id) %>
+            </td>
           </tr>
-          <% @members.each do |member| %>
-            <tr>
-              <td class="border-bottom align-middle">
-                <% if member.image.attached? %>
-                  <%= image_tag member.image, size: "100x100" %><br>
-                <% else %>
-                  <%= image_tag 'no_image_member', size: "100x100" %><br>
-                <% end %>
-                <%= member.name %>
-                <% if member.is_deleted == true %>
-                  <p>＜退会済み＞</p>
-                <% end %>
-              </td>
-              <td class="border-bottom align-middle"><%= member.dog_breed %></td>
-              <td class="border-bottom align-middle">
-                フォロー数：<%= member.followings.count %><br>
-                フォロワー数：<%= member.followers.count %>
-              </td>
-              <td class="border-bottom align-middle">
-                <%= link_to "詳細", member_path(member.id) %>
-              </td>
-            </tr>
-          <% end %>
-        <% else %>
-          <p>・会員はいません</p>
         <% end %>
       </table>
       <div class="pagination">

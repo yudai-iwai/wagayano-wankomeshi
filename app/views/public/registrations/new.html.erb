@@ -1,3 +1,6 @@
+<span class="bg-danger h5">
+  <%= flash[:notice] %>
+</span>
 <div class="container">
   <div class="row">
     <div class="mt-5 mb-5">
@@ -11,7 +14,7 @@
       <%= render "public/shared/error_messages", resource: resource %>
       <table class="ml-5">
         <tr height="50">
-          <th><%= f.label :会員名（15文字以内） %></th>
+          <th><%= f.label :会員名（8文字以内） %></th>
           <td><%= f.text_field :name, autofocus: true %></td>
         </tr>
         <tr height="50">

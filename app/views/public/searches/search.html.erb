@@ -1,61 +1,60 @@
-<div class="mt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <table class="table table-borderd">
-          <tr class="table-borderless">
-            <th>
-              <span class="bg-light h3 col-12">検索結果</span>
-            </th>
+<div class="container">
+  <div class="row mt-4 mb-3">
+    <div class="col-9">
+       <span class="bg-warning h3">検索結果</span>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-borderd table-hover">
+        <% if @range == "犬種" %>
+          <tr class="bg-light">
+            <th class="col-3">会員名</th>
+            <th class="col-3">愛犬の犬種</th>
+            <th class="col-3"></th>
           </tr>
-          <% if @range == "犬種" %>
-            <tr class="bg-light">
-              <th class="col-3">会員名</th>
-              <th class="col-3">愛犬の犬種</th>
-              <th class="col-3"></th>
+          <% @members.each do |member| %>
+            <tr>
+              <td class="border-bottom align-middle">
+                <% if member.image.attached? %>
+                  <%= image_tag member.image, size: "100x100" %><br>
+                <% else %>
+                  <%= image_tag 'no_image_member', size: "100x100" %><br>
+                <% end %>
+                <%= member.name %>
+                <% if member.is_deleted == true %>
+                  <p>＜退会済み＞</p>
+                <% end %>
+              </td>
+              <td class="border-bottom align-middle"><%= member.dog_breed %></td>
+              <td class="border-bottom align-middle"><%= link_to "詳細", member_path(member.id) %></td>
             </tr>
-            <% @members.each do |member| %>
-              <tr>
-                <td class="border-bottom align-middle">
-                  <% if member.image.attached? %>
-                    <%= image_tag member.image, size: "100x100" %>
-                  <% else %>
-                    <%= image_tag 'no_image_member', size: "100x100" %>
-                  <% end %>
-                  <%= member.name %><br>
-                  <% if member.is_deleted == true %>
-                    <p>＜退会済み＞</p>
-                  <% end %>
-                </td>
-                <td class="border-bottom align-middle"><%= member.dog_breed %></td>
-                <td class="border-bottom align-middle">
-                  <%= link_to "詳細", member_path(member.id) %>
-                </td>
-              </tr>
-            <% end %>
-          <% else %>
-            <tr class="bg-light">
-              <th class="col-3">タイトル</th>
-              <th class="col-3">会員名</th>
-              <th class="col-3"></th>
-            </tr>
-            <% @post_recipes.each do |post_recipe| %>
-              <tr>
-                <td class="border-bottom align-middle">
-                  <% if post_recipe.image.attached? %>
-                    <%= image_tag post_recipe.image, size: "100x100" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %>
-                  <% end %>
-                  <%= post_recipe.title %>
-                </td>
-                <td class="border-bottom align-middle"><%= post_recipe.member.name %></td>
-                <td class="border-bottom align-middle"><%= link_to "Show", post_recipe_path(post_recipe.id) %></td>
-              </tr>
-            <% end %>
           <% end %>
-        </table>
-      </div>
+        <% else %>
+          <tr class="bg-light">
+            <th class="col-3">タイトル</th>
+            <th class="col-3">会員名</th>
+            <th class="col-3"></th>
+          </tr>
+          <% @post_recipes.each do |post_recipe| %>
+            <tr>
+              <td class="border-bottom align-middle">
+                <% if post_recipe.image.attached? %>
+                  <%= image_tag post_recipe.image, size: "100x100" %><br>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %><br>
+                <% end %>
+                <%= post_recipe.title %>
+              </td>
+              <td class="border-bottom align-middle"><%= post_recipe.member.name %></td>
+              <td class="border-bottom align-middle"><%= link_to "詳細", post_recipe_path(post_recipe.id) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

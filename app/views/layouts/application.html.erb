@@ -13,10 +13,10 @@
     <header class="shadow-sm", style="background: linear-gradient(#AAAAAA, #EEEEEE);">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-1"><%= image_tag 'logo4.png', size: '200x80' %></a>
+          <a class="navbar-brand m-1"><%= image_tag 'logo4.png', size: '200x80' %></a>
           <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
-              <li class="nav-item-name h5 bg-primary text-white">
+              <li class="nav-item-name h6 bg-primary text-white">
                 ようこそ、<%= current_member.name %>さん！
               </li>
               <li class="nav-item">
@@ -35,7 +35,7 @@
                 <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
             <% elsif admin_signed_in? %>
-              <li class="nav-item-name h5 bg-primary text-white">
+              <li class="nav-item-name h6 bg-primary text-white">
                 管理者ログイン中！
               </li>
               <li class="nav-item">
@@ -49,7 +49,7 @@
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
+                <%= link_to "トップ", root_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "サイト紹介", about_path, class: 'nav-link text-dark' %>
