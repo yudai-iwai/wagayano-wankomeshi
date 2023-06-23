@@ -32,6 +32,8 @@ ja:
         recipe: 作り方
       post_comment:
         comment: コメント
+      report:
+        reason: 通報理由
   enums:
     report:
       status:
