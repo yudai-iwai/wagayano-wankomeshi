@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         get 'followers'
       end
       resources :relationships, only: [:create, :destroy]
+      resources :reports, only: [:new, :create]
     end
   end
   # 管理者側ルーティング
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
         patch 'resume'
       end
     end
+    resources :reports, only: [:index, :show, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

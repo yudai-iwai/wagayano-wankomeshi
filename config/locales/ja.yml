@@ -32,7 +32,9 @@ ja:
         recipe: 作り方
       post_comment:
         comment: コメント
-  activemodel:   # Formオブジェクトを用いた場合
-     attributes:
-       order_object:
-         post_code: 郵便番号
+  enums:
+    report:
+      status:
+        waiting: 対応待ち
+        keep: 保留中
+        finish: 対応済み

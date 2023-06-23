@@ -1,15 +1,19 @@
+<div class="bg-success text-white">
+  <%= flash[:notice] %>
+</div>
 <div class="container">
   <div class="row mt-4 mb-3">
-    <div class="col-10">
+    <div class="col-5">
       <span class="bg-warning h3">会員情報詳細</span>
     </div>
-    <div class="col-2 text-right">
+    <div class="col-7 text-right">
       <% unless @member == current_member %>
         <% if current_member.following?(@member) %>
-          <%= link_to "フォローを外す", member_relationship_path(@member.id), method: :delete, class: "btn btn-danger" %>
+          <%= link_to "フォローを外す", member_relationship_path(@member.id), method: :delete, class: "btn btn-secondary" %>
         <% else %>
           <%= link_to "フォローする", member_relationships_path(@member.id), method: :post, class: "btn btn-primary" %>
         <% end %>
+        <%= link_to "この会員を通報する", new_member_report_path(@member), class: "btn btn-danger" %>
       <% end %>
     </div>
   </div>

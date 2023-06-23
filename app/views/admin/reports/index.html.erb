@@ -1,0 +1,43 @@
+<div class="bg-success text-white">
+  <%= flash[:notice] %>
+</div>
+<div class="container">
+  <div class="row mt-4 mb-3">
+    <div class="col-9">
+      <span class="bg-warning h3">通報一覧</span>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-border table-hover">
+        <tr class="bg-light">
+          <th class="col-2">通報ID</th>
+          <th class="col-4">会員名</th>
+          <th class="col-4">通報者</th>
+          <th class="col-2">ステータス</th>
+        </tr>
+        <% @reports.reverse.each do |report| %>
+        <tr>
+          <td class="border-bottom">
+            <%= link_to admin_report_path(report), class: "text-dark" do %>
+              <%= report.id %>
+            <% end %>
+          </td>
+          <td class="border-bottom"><%= report.reported.name %></td>
+          <td class="border-bottom"><%= report.reporter.name %></td>
+          <% if report.status == 0 %>
+            <td class="text-danger font-weight-bold border-bottom"><%= report.status_i18n %></td>
+          <% elsif report.status == 1 %>
+            <td class="text-secondary font-weight-bold border-bottom"><%= report.status_i18n %></td>
+          <% else %>
+            <td class="text-success font-weight-bold border-bottom"><%= report.status_i18n %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

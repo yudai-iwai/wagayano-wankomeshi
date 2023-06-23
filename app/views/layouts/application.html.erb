@@ -44,6 +44,9 @@
                 <%= link_to '会員一覧', admin_members_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
+                <%= link_to '通報一覧', admin_reports_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
             <% else %>
