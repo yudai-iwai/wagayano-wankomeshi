@@ -20,7 +20,7 @@
           <th class="col-3">通報者</th>
           <th class="col-2">ステータス</th>
         </tr>
-        <% @reports.reverse.each do |report| %>
+        <% @reports.each do |report| %>
         <tr>
           <td class="border-bottom">
             <%= link_to admin_report_path(report), class: "text-dark" do %>
@@ -30,9 +30,9 @@
           <td class="border-bottom"><%= report.created_at.strftime('%Y/%m/%d') %></td>
           <td class="border-bottom"><%= report.reported.name %></td>
           <td class="border-bottom"><%= report.reporter.name %></td>
-          <% if report.status == 0 %>
+          <% if report.status == "waiting" %>
             <td class="text-danger font-weight-bold border-bottom"><%= report.status_i18n %></td>
-          <% elsif report.status == 1 %>
+          <% elsif report.status == "keep" %>
             <td class="text-secondary font-weight-bold border-bottom"><%= report.status_i18n %></td>
           <% else %>
             <td class="text-success font-weight-bold border-bottom"><%= report.status_i18n %></td>
@@ -40,6 +40,9 @@
         </tr>
         <% end %>
       </table>
+      <div class="pagination">
+        <%= paginate @reports %>
+      </div>
     </div>
   </div>
 </div>
