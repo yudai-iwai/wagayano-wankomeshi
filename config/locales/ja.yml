@@ -25,6 +25,9 @@ ja:
         dog_breed: 愛犬の犬種
         dog_age: 愛犬の年齢
         dog_gender: 愛犬の性別
+      admin:
+        email: メールアドレス
+        password: パスワード
       post_recipe:
         title: タイトル
         introduction: 紹介文
