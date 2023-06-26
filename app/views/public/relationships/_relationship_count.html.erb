@@ -1,0 +1,6 @@
+<%= link_to followings_member_path(member) do %>
+  フォロー：<%= member.followings.count %><br>
+<% end %>
+<%= link_to followers_member_path(member) do %>
+  フォロワー：<%= member.followers.count %>
+<% end %>

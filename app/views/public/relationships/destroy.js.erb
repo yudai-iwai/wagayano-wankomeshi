@@ -1,0 +1,2 @@
+$('#relationship_buttons_<%= @member.id %>').html("<%= j(render "public/relationships/relationship", member: @member) %>");
+$('#relationship_count').html("<%= j(render 'public/relationships/relationship_count', member: @member) %>");

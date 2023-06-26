@@ -3,17 +3,17 @@
 </div>
 <div class="container">
   <div class="row mt-4 mb-3">
-    <div class="col-5">
+    <div class="col-9">
       <span class="bg-warning h3">会員情報詳細</span>
     </div>
-    <div class="col-7 text-right">
+    <div class="col-3 text-right">
       <% unless @member == current_member %>
-        <% if current_member.following?(@member) %>
-          <%= link_to "フォローを外す", member_relationship_path(@member.id), method: :delete, class: "btn btn-secondary" %>
-        <% else %>
-          <%= link_to "フォローする", member_relationships_path(@member.id), method: :post, class: "btn btn-primary" %>
-        <% end %>
-        <%= link_to "この会員を通報する", new_member_report_path(@member), class: "btn btn-danger" %>
+        <div id="relationship_buttons_<%= @member.id %>">
+          <%= render 'public/relationships/relationship', member: @member %>
+        </div>
+        <div class="mt-3">
+          <%= link_to "この会員を通報する", new_member_report_path(@member), class: "btn btn-danger btn-block" %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -47,12 +47,9 @@
           <td class="border-bottom align-middle"><%= @member.dog_age %>歳</td>
           <td class="border-bottom align-middle"><%= @member.dog_gender %></td>
           <td class="border-bottom align-middle">
-            <%= link_to followings_member_path(@member) do %>
-              フォロー：<%= @member.followings.count %><br>
-            <% end %>
-            <%= link_to followers_member_path(@member) do %>
-              フォロワー：<%= @member.followers.count %>
-            <% end %>
+            <div id="relationship_count">
+              <%= render "public/relationships/relationship_count", member: @member %>
+            </div>
           </td>
         </tr>
       </table>
