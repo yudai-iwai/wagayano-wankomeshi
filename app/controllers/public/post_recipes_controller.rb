@@ -20,9 +20,13 @@ class Public::PostRecipesController < ApplicationController
   end
 
   def show
-    @post_recipe = PostRecipe.find(params[:id])
-    @post_comment = PostComment.new
-    @post_comments = @post_recipe.post_comments
+    @post_recipe = PostRecipe.find_by(id: params[:id])
+    if @post_recipe.present?
+      @post_comment = PostComment.new
+      @post_comments = @post_recipe.post_comments
+    else
+      redirect_to post_recipes_path
+    end
   end
 
   def destroy
