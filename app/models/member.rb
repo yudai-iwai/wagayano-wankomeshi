@@ -21,31 +21,31 @@ class Member < ApplicationRecord
   has_many :post_recipes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   # フォロー・フォロワーに関するコード
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   # 通報に関するコード
   has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
-  
+
   validates :name, presence: true, length: { maximum: 8 }
   validates :dog_name, presence: true, length: { maximum: 15 }
   validates :dog_breed, presence: true
   validates :dog_age, presence: true
   validates :dog_gender, presence: true
-  
+
   def follow(member_id)
     relationships.create(followed_id: member_id)
   end
-  
+
   def unfollow(member_id)
     relationships.find_by(followed_id: member_id).destroy
   end
-  
+
   def following?(member)
     followings.include?(member)
   end
@@ -59,7 +59,7 @@ class Member < ApplicationRecord
   def boolean_label(value)
     value ? '退会' : '有効'
   end
-  
+
   # 検索方法の分岐
   def self.looks(search, word)
     if search == "perfect_match"
@@ -74,5 +74,5 @@ class Member < ApplicationRecord
       @member = Member.all
     end
   end
-  
+
 end

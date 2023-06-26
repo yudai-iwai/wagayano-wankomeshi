@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         get 'followings'
         get 'followers'
       end
-      resources :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
       resources :reports, only: [:new, :create]
     end
   end

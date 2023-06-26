@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row mt-4 mb-3">
-    <div class="col-8">
+    <div class="col-9">
       <span class="bg-warning h3">会員情報詳細</span>
     </div>
-    <div class="col-4 text-right">
+    <div class="col-3 text-right">
       <% if @member.is_deleted == true %>
-        <%= link_to "利用再開", resume_admin_member_path(@member.id), method: :patch, class: "btn btn-success" %>
+        <%= link_to "利用再開", resume_admin_member_path(@member.id), method: :patch, class: "btn btn-success btn-block" %>
       <% else %>
-        <%= link_to "退会させる", out_admin_member_path(@member.id), method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会させますか？" %>
+        <%= link_to "退会させる", out_admin_member_path(@member.id), method: :patch, class: "btn btn-danger btn-block", "data-confirm" => "本当に退会させますか？" %>
       <% end %>
     </div>
   </div>
