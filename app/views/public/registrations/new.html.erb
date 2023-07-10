@@ -14,16 +14,16 @@
       <%= render "public/shared/error_messages", resource: resource %>
       <table class="ml-5">
         <tr height="50">
-          <th><%= f.label :会員名（8文字以内） %></th>
+          <th><%= f.label :【必須】　会員名（8文字以内） %></th>
           <td><%= f.text_field :name, autofocus: true %></td>
         </tr>
         <tr height="50">
-          <th><%= f.label :メールアドレス %></th>
+          <th><%= f.label :【必須】　メールアドレス %></th>
           <td><%= f.email_field :email, autocomplete: "email" %></td>
         </tr>
         <tr height="50">
           <th>
-            <%= f.label :パスワード %>
+            <%= f.label :【必須】　パスワード %>
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %>文字以上)</em>
             <% end %>
@@ -31,28 +31,37 @@
           <td><%= f.password_field :password, autocomplete: "new-password" %></td>
         </tr>
         <tr height="50">
-          <th><%= f.label :パスワード（確認用） %></th>
+          <th><%= f.label :【必須】　パスワード（確認用） %></th>
           <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
         </tr>
         <tr height="50">
-          <th><%= f.label :愛犬の名前（15文字以内） %></th>
+          <th><%= f.label :【任意】　愛犬の名前（15文字以内） %></th>
           <td><%= f.text_field :dog_name %></td>
         </tr>
         <tr height="50">
-          <th><%= f.label :愛犬の犬種 %></th>
+          <th><%= f.label :【任意】　愛犬の犬種 %></th>
           <td><%= f.text_field :dog_breed %></td>
         </tr>
         <tr height="50">
-          <th><%= f.label :愛犬の年齢 %></th>
+          <th><%= f.label :【任意】　愛犬の年齢 %></th>
           <td><%= f.select :dog_age, *[1..50], include_blank: "年齢選択" %>　歳</td>
         </tr>
         <tr height="50">
-          <th><%= f.label :愛犬の性別 %></th>
+          <th><%= f.label :【任意】　愛犬の性別 %></th>
           <td><%= f.select :dog_gender, ['オス','メス'], include_blank: "性別選択" %></td>
         </tr>
         <tr height="100">
           <th></th>
           <td><%= f.submit "新規登録", class: 'btn btn-success col-10 mt-3' %></td>
+        </tr>
+        <tr height="50">
+          <th></th>
+          <td></td>
+          <td>
+            ※愛犬情報は、後から【マイページ→登録情報を編集する】で登録可能です。<br>
+            ※本サイトをご利用される場合、できる限り愛犬情報のご登録をお願いします。<br>
+            ※今後、愛犬を迎え入れる予定の方については、愛犬情報は空欄でご登録ください。
+          </td>
         </tr>
       </table>
     <% end %>

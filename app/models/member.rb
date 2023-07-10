@@ -33,10 +33,6 @@ class Member < ApplicationRecord
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 8 }
-  validates :dog_name, presence: true, length: { maximum: 15 }
-  validates :dog_breed, presence: true
-  validates :dog_age, presence: true
-  validates :dog_gender, presence: true
 
   def follow(member_id)
     relationships.create(followed_id: member_id)
