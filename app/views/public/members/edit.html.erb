@@ -11,7 +11,7 @@
       <%= form_with model: @member do |f| %>
         <table class="ml-5">
           <tr height="50">
-            <th><%= f.label :会員名 %></th>
+            <th><%= f.label :会員名（8文字以内） %></th>
             <td><%= f.text_field :name, autofocus: true %></td>
           </tr>
           <tr height="50">
@@ -19,7 +19,7 @@
             <td><%= f.email_field :email, autocomplete: "email" %></td>
           </tr>
           <tr height="50">
-            <th><%= f.label :愛犬の名前 %></th>
+            <th><%= f.label :愛犬の名前（15文字以内） %></th>
             <td><%= f.text_field :dog_name %></td>
           </tr>
           <tr height="50">
